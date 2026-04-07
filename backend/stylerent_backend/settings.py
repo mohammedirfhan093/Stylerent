@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+import os
+load_dotenv()
 """
 Django settings for stylerent_backend project.
 
@@ -86,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'stylerent_db',
         'USER': 'root',
-        'PASSWORD': 'Bmw123@#',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -138,4 +141,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-GEMINI_API_KEY = 'AIzaSyAklBnNY7TZn90K4GkSCvJKntkrFPqLO18'
+SECRET_KEY = os.getenv('SECRET_KEY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
