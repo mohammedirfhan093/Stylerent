@@ -50,7 +50,15 @@ function ProductDetail() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <div style={styles.imagePlaceholder}>👗</div>
+        {product.image ? (
+  <img
+    src={`http://127.0.0.1:8000${product.image}`}
+    alt={product.title}
+    style={styles.detailImage}
+  />
+) : (
+  <div style={styles.imagePlaceholder}>👗</div>
+)}
         <div style={styles.details}>
           <h2 style={styles.title}>{product.title}</h2>
           <p style={styles.category}>Category: {product.category}</p>
@@ -90,6 +98,13 @@ const styles = {
     backgroundColor: '#f5f5f5',
     minHeight: '100vh',
   },
+  detailImage: {
+  width: '300px',
+  minHeight: '300px',
+  maxHeight: '400px',
+  objectFit: 'cover',
+  objectPosition: 'top',
+},
   card: {
     backgroundColor: 'white',
     borderRadius: '10px',

@@ -62,7 +62,15 @@ function Products() {
         <div style={styles.grid}>
           {products.map((product) => (
             <Link to={`/products/${product.id}`} key={product.id} style={styles.card}>
-              <div style={styles.imagePlaceholder}>👗</div>
+              {product.image ? (
+  <img 
+    src={`http://127.0.0.1:8000${product.image}`} 
+    alt={product.title}
+    style={styles.productImage}
+  />
+) : (
+  <div style={styles.imagePlaceholder}>👗</div>
+)}
               <div style={styles.cardBody}>
                 <h3 style={styles.productTitle}>{product.title}</h3>
                 <p style={styles.category}>{product.category}</p>
@@ -82,7 +90,14 @@ const styles = {
     padding: '30px',
     backgroundColor: '#f5f5f5',
     minHeight: '100vh',
+    
   },
+  productImage: {
+  width: '100%',
+  height: '200px',
+  objectFit: 'cover',
+  objectPosition: 'top',
+},
   title: {
     textAlign: 'center',
     color: '#1a1a2e',
@@ -116,14 +131,14 @@ const styles = {
     justifyContent: 'center',
   },
   card: {
-    backgroundColor: 'white',
-    borderRadius: '10px',
-    width: '250px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-    textDecoration: 'none',
-    color: 'black',
-    overflow: 'hidden',
-  },
+  backgroundColor: 'white',
+  borderRadius: '10px',
+  width: '250px',
+  boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+  textDecoration: 'none',
+  color: 'black',
+  overflow: 'hidden',
+},
   imagePlaceholder: {
     backgroundColor: '#1a1a2e',
     height: '150px',
